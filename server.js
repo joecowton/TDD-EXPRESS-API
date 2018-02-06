@@ -4,19 +4,16 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser'
 import methodOverride from 'method-override';
 import record from './src/routes/record'
-
+const port = 8000;
 const app = express();
-import config from './config/config';
 
-mongoose.connect(config.db);
+mongoose.connect("mongodb://user:user@ds225308.mlab.com:25308/records-test");
 
 mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open to' + config.db);
+  console.log('Mongoose default connection open to' + port);
 });
 
-
 app.use(morgan('dev'))
-// app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/json' }));
 
@@ -28,13 +25,12 @@ app.route("/records")
 
 app.route("/records/:id")
     .get(record.find)
-    // .delete(record.deleteRecord)
-    // .put(record.updateRecord);
+    .delete(record.delete)
+    .put(record.update)
 
-// console.log("Listening on port " + port);
-app.listen(config.port, err => {
+app.listen(port, err => {
   if(err) throw err;
-  console.log('App listening on port' + config.port);
+  console.log('App listening on port' + port);
 })
 
 module.exports = app;

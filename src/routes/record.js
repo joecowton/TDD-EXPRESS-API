@@ -34,7 +34,16 @@ module.exports = {
       .remove({_id : req.params.id}, (err, result) => {
         res.json({ message: "Book successfully deleted!", result });
       });
+  },
+
+  update(req, res) {
+    return Record
+      .findById({_id: req.params.id}, (err, record) => {
+        if(err) res.send(err);
+        Object.assign(record, req.body).save((err, record) => {
+            if(err) res.send(err);
+            res.json({ message: 'Record updated!', record });
+      });
+    });
   }
-
-
 }
