@@ -23,13 +23,13 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get("/", (req, res) => res.json({message: "Welcome to our record shop!"}));
 
 app.route("/records")
-    .get(record.getRecords)
-    .post(record.postRecord)
+    .get(record.show)
+    .post(record.create)
 
-// app.route("/book/:id")
-//     .get(record.getRecord)
-//     .delete(record.deleteRecord)
-//     .put(record.updateRecord);
+app.route("/records/:id")
+    .get(record.find)
+    // .delete(record.deleteRecord)
+    // .put(record.updateRecord);
 
 // console.log("Listening on port " + port);
 app.listen(config.port, err => {
