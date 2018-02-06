@@ -1,20 +1,21 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const RecordSchema = new Schema({
-	title: {
-    type: String
-  },
-	genre: {
-    type:Boolean,
-    default: false
-  },
-	price: {
-    type: Date,
-    default: Date.now
+const RecordSchema = new Schema(
+  {
+  	title: { type: String },
+    price: { type: String },
+    genre: { type: String }
   }
-});
 
-const RecordModel = mongoose.model('Record', RecordSchema);
+);
 
-module.exports = RecordModel;
+// RecordSchema.pre('save', next => {
+//   now = new Date();
+//   if(!this.createdAt) {
+//     this.createdAt = now;
+//   }
+//   next();
+// });
+
+module.exports = mongoose.model('Record', RecordSchema);
