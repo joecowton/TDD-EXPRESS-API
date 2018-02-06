@@ -18,7 +18,7 @@ module.exports = {
       })
       .then(record => res.status(201).json(record))
       .catch(error => res.status(400).send(error));
-    },
+  },
 
   find(req, res) {
     return Record
@@ -26,6 +26,14 @@ module.exports = {
         if(err) res.send(err);
         res.json(record);
       })
+      .catch(error => res.status(400).send(error));
+  },
+
+  delete(req, res) {
+    return Record
+      .remove({_id : req.params.id}, (err, result) => {
+        res.json({ message: "Book successfully deleted!", result });
+      });
   }
 
 
