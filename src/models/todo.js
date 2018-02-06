@@ -1,20 +1,20 @@
-import Mongoose from 'mongoose';
-const Schema = mongoose.schema;
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const TodoSchema = Schema({
-  todo: {
+const TodoSchema = new Schema({
+	todo: {
     type: String
   },
-  completed: {
-    type: Boolean,
+	completed: {
+    type:Boolean,
     default: false
   },
-  created_by: {
+	created_by: {
     type: Date,
     default: Date.now
   }
-})
+});
 
-const TodoModel = mongoose.model('Todo', TodoSchema)
+const TodoModel = mongoose.model('Todo', TodoSchema);
 
 module.exports = TodoModel;
