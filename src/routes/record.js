@@ -12,11 +12,12 @@ module.exports = {
   create(req, res) {
     return Record
       .create({
+        artist: req.body.artist,
         title: req.body.title,
         genre: req.body.genre,
         price: req.body.price
       })
-      .then(record => res.status(201).json(record))
+      .then(record => res.status(200).json(record))
       .catch(error => res.status(400).send(error));
   },
 

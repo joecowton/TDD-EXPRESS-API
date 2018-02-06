@@ -29,9 +29,9 @@ describe('Records', () => {
     })
   })
 
-  describe('/POST book', () => {
+  describe('/POST record', () => {
     it('it should not POST a record without a title', (done) => {
-      let record = {
+      let record =  {
           genre: "Reggae",
           price: 1.99
       }
@@ -47,5 +47,53 @@ describe('Records', () => {
             done();
           });
     });
+
+    it('it should POST a record with correct params', (done) => {
+      let record = {
+          artist: "Mad Proffesor",
+          title: "Ooh Yeah",
+          genre: "Reggae",
+          price: 1.99
+      }
+      chai.request(server)
+          .post('/records')
+          .send(record)
+          .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('object');
+              res.body.should.have.property('title');
+              res.body.should.have.property('artist');
+              res.body.should.have.property('genre');
+              res.body.should.have.property('price');
+            done();
+          });
+    });
   })
+
+  describe('/GET/:id book', () => {
+      it('it should GET a book by the given id', (done) => {
+        let record = new Record ({
+            artist: "Mad Proffesor",
+            title: "Ooh Yeah",
+            genre: "Reggae",
+            price: 1.99
+        })
+        record.save((err, record) => {
+            chai.request(server)
+            .get('/records/' + record.id)
+            .send(record)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('artist');
+                res.body.should.have.property('genre');
+                res.body.should.have.property('title');
+                res.body.should.have.property('price');
+                res.body.should.have.property('_id').eql(record.id);
+              done();
+            });
+        });
+
+      });
+  });
 })

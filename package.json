@@ -18,11 +18,12 @@
     "express": "^4.16.2",
     "method-override": "^2.3.10",
     "mocha": "^5.0.0",
+    "mocha-better-spec-reporter": "^3.1.0",
     "mongoose": "^5.0.3",
     "morgan": "^1.9.0"
   },
   "scripts": {
-    "test": "mocha --timeout 10000 --require babel-register",
+    "test": "mocha -R mocha-better-spec-reporter --reporter-options hide-stats=false,hide-titles=false --timeout 10000 --require babel-register --watch",
     "start": "SET NODE_ENV=dev && babel-node server.js "
   },
   "repository": {
