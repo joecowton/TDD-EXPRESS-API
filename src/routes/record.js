@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Record from '../models/record';
+const mongoose = require('mongoose');
+const Record = require('../models/record');
 
 module.exports = {
   show (req, res) {

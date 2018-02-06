@@ -1,9 +1,9 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import morgan from 'morgan';
-import bodyParser from 'body-parser'
-import methodOverride from 'method-override';
-import record from './src/routes/record'
+const express = require('express');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const bodyParser = require ('body-parser');
+const methodOverride = require ('method-override');
+const record = require('./src/routes/record');
 const port = 8000;
 const app = express();
 
