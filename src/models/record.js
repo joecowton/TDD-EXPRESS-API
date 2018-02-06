@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const RecordSchema = new Schema(
   {
-  	title: { type: String },
+  	title: {
+       type: String, 
+       required: true
+     },
     price: { type: String },
     genre: { type: String }
   }
