@@ -1,16 +1,17 @@
 import sinon from 'sinon'
+import chai, { expect } from 'chai'
 import mongoose from 'mongoose'
-import TodoModel from '../src/models/todo';
+import Todo from '../src/models/todo';
 import 'sinon-mongoose';
-
 
 describe('Get all todos', () => {
   beforeEach(() =>{
+    let TodoMock = sinon.mock(Todo);
   })
 
   it('should return all todos', (done) => {
-    let TodoMock = sinon.mock(Todo);
     let expectedResult = { status: true, todo: []};
+
     TodoMock.expects('find').yields(null, expectedResult);
 
     Todo.find((err, result) => {
@@ -22,7 +23,7 @@ describe('Get all todos', () => {
   })
 
   it("should return error", function(done){
-    var expectedResult = {status: false, error: "Something went wrong"};
+    let expectedResult = {status: false, error: "Something went wrong"};
     TodoMock.expects('find').yields(expectedResult, null);
     Todo.find(function (err, result) {
         TodoMock.verify();
