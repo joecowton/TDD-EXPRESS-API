@@ -1,0 +1,33 @@
+{
+  "name": "TDD-EXPRESS-API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joecowton/TDD-EXPRESS-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joecowton/TDD-EXPRESS-API/issues"
+  },
+  "homepage": "https://github.com/joecowton/TDD-EXPRESS-API#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.29.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.0"
+  }
+}
