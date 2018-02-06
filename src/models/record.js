@@ -1,20 +1,20 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const TodoSchema = new Schema({
-	todo: {
+const RecordSchema = new Schema({
+	title: {
     type: String
   },
-	completed: {
+	genre: {
     type:Boolean,
     default: false
   },
-	created_by: {
+	price: {
     type: Date,
     default: Date.now
   }
 });
 
-const TodoModel = mongoose.model('Todo', TodoSchema);
+const RecordModel = mongoose.model('Record', RecordSchema);
 
-module.exports = TodoModel;
+module.exports = RecordModel;

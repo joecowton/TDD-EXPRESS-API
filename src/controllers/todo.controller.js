@@ -1,25 +1,25 @@
-const Todo = require('../models/todo')
+const Record = require('../models/record')
 
-const TodoCtrl = {
-  GetTodo: (req, res) => {
-    Todo.find({}, err, todos => {
+const RecordCtrl = {
+  GetRecord: (req, res) => {
+    Todo.find({}, err, records => {
       if(err) {
         res.json({status: false, error: "Something went wrong"});
         return;
       }
-      res.json({ status: true, todo: todos});
+      res.json({ status: true, record: records});
     });
   },
-  PostTodo: function(req, res){
-      var todo = new Todo(req.body);
-      todo.save(function(err, todo){
+  PostRecord: function(req, res){
+      var record = new Record(req.body);
+      record.save(function(err, record){
         if(err) {
           res.json({status: false, error: "Something went wrong"});
           return;
         }
-        res.json({status: true, message: "Todo Saved!!"});
+        res.json({status: true, message: "Record Saved!!"});
       });
   }
 }
 
-module.exports TodoCtrl;
+module.exports RecordCtrl;

@@ -23,3 +23,5 @@ app.listen(config.port, err => {
   if(err) throw err;
   console.log('App listening on port' + config.port);
 })
+
+app.get("/", (req, res) => res.json({message: "Welcome to our record shop!"}));
