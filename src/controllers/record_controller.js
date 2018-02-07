@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Record = require('../models/record');
 
 module.exports = {

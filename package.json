@@ -10,6 +10,7 @@
     "chai-http": "^3.0.0",
     "config": "^1.29.4",
     "nodemon": "^1.14.12",
+    "supertest": "^3.0.0",
     "webpack": "^3.10.0"
   },
   "devDependencies": {
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "test": "nodemon --exec 'mocha -R min --timeout 10000 --require babel-register'",
-    "start": "SET NODE_ENV=dev && babel-node server.js "
+    "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
