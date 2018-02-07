@@ -25,7 +25,7 @@
     "morgan": "^1.9.0"
   },
   "scripts": {
-    "test": "mocha -R mocha-better-spec-reporter --reporter-options hide-stats=false,hide-titles=false --timeout 10000 --require babel-register --watch",
+    "test": "mocha -R mocha-better-spec-reporter --reporter-options hide-stats=false,hide-titles=false --timeout 10000 --require babel-register",
     "start": "SET NODE_ENV=dev && babel-node server.js "
   },
   "repository": {
