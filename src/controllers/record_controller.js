@@ -2,8 +2,7 @@ const Record = require('../models/record');
 
 module.exports = {
   show (req, res, next) {
-    Record
-      .find({})
+    Record.find({})
       .then(records => res.status(200).json(records))
       .catch(next)
   },
@@ -11,8 +10,7 @@ module.exports = {
   create(req, res, next) {
     const recordProps = req.body
 
-    Record
-      .create(recordProps)
+    Record.create(recordProps)
       .then(record => res.status(200).json(record))
       .catch(next)
   },
@@ -20,18 +18,16 @@ module.exports = {
   find(req, res, next){
     const recordId = req.params.id;
 
-    Record
-      .findById({ _id: recordId})
-      .then(record => res.json(record))
+    Record.findById({ _id: recordId})
+      .then(record => res.status(200).json(record))
       .catch(next);
   },
 
   delete(req, res, next) {
     const recordId = req.params.id;
 
-    Record
-      .findByIdAndRemove( { _id: recordId })
-      .then(record => res.status(204).send(record))
+    Record.findByIdAndRemove( { _id: recordId })
+      .then(record => res.status(204).json(record))
       .catch(next);
   },
 
@@ -39,10 +35,9 @@ module.exports = {
     const recordId = req.params.id;
     const recordProps = req.body;
 
-    Record
-      .findByIdAndUpdate({ _id: recordId }, recordProps)
+    Record.findByIdAndUpdate({ _id: recordId }, recordProps)
       .then(() => Record.findById({ _id: recordId }))
-      .then(record => res.json(record))
+      .then(record => res.status(200).json(record))
       .catch(next)
   }
-}
+};
