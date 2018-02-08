@@ -17,7 +17,8 @@ const RecordSchema = new Schema(
     },
     genre: {
       type: String
-    }
+    },
+    quantity: Number
   }
 );
 
