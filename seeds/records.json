@@ -1,0 +1,23 @@
+[
+  {
+    "artist": "Appleblim & Peverelist",
+    "title": "Soundboy's Ashes Get Hacked Up And Spat Out In Disgust EP",
+    "genre": "Techno",
+    "price": "2.99",
+    "quantity": 4
+  },
+  {
+    "artist": "Hootie and the Blowfish",
+    "title": "Boop Boop",
+    "genre": "Disco",
+    "price": "4.50",
+    "quantity": 3
+  },
+  {
+    "artist": "Hall & Oates",
+    "title": "Whatever man",
+    "genre": "Boogy",
+    "price": "4.99",
+    "quantity": 12
+  }
+]

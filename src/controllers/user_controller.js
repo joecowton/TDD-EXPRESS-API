@@ -8,34 +8,25 @@ module.exports = {
   },
 
   create(req, res, next) {
-    const userProps = req.body
-
-    User.create(userProps)
+    User.create(req.body)
       .then(user => res.status(200).json(user))
       .catch(next)
   },
 
   find(req, res, next){
-    const userId = req.params.id;
-
-    User.findById({ _id: userId})
+    User.findById({ _id: req.params.id })
       .then(user => res.status(200).json(user))
       .catch(next);
   },
 
   delete(req, res, next) {
-    const userId = req.params.id;
-
-    User.findByIdAndRemove( { _id: userId })
+    User.findByIdAndRemove( { _id: req.params.id })
       .then(user => res.status(204).json(user))
       .catch(next);
   },
 
   update(req, res, next) {
-    const userId = req.params.id;
-    const userProps = req.body;
-
-    User.findByIdAndUpdate({ _id: userId }, userProps)
+    User.findByIdAndUpdate({ _id: req.params.id }, req.body)
       .then(() => User.findById({ _id: userId }))
       .then(user => res.status(200).json(user))
       .catch(next)

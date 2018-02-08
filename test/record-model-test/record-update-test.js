@@ -21,16 +21,16 @@ describe('Updating records', () => {
       })
   });
 
-  it('model class can update', (done) => {
-    Record.update({ artist: 'Mad Proffesor'}, { artist: 'Alex Higgins'})
-      .then(() => {
-        Record.findOne({ artist: 'Alex Higgins' })
-          .then(record => {
-            assert(record.artist === 'Alex Higgins')
-            done();
-          })
-      })
-  });
+  // it('model class can update', (done) => {
+  //   Record.update({ artist: 'Mad Proffesor'}, { artist: 'Alex Higgins'})
+  //     .then(() => {
+  //       Record.findOne({ artist: 'Alex Higgins' })
+  //         .then(record => {
+  //           assert(record.artist === 'Alex Higgins')
+  //           done();
+  //         })
+  //     })
+  // });
 
   it('model class can update one record', (done) => {
     Record.findOneAndUpdate({ artist: 'Mad Proffesor'}, { artist: 'Alex Higgins'})
@@ -44,7 +44,7 @@ describe('Updating records', () => {
   });
 
   it('model class can find record with ID and update', (done) => {
-    Record.findByIdAndUpdate(record._id, { artist: 'Alex '})
+    Record.findByIdAndUpdate(record._id, { artist: 'Alex Higgins'})
       .then(() => {
         Record.findOne({ artist: 'Alex Higgins' })
           .then(record => {

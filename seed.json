@@ -1,0 +1,5 @@
+{
+	"undefined": "mongodb://user:user@ds125938.mlab.com:25938/records-dev",
+	"dev": "mongodb://user:user@ds125938.mlab.com:25938/records-dev",
+	"prod": "mongodb://user:user@ds125938.mlab.com:25938/records-dev"
+}

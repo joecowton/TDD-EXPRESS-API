@@ -5,6 +5,23 @@ const app = require('../../app');
 const User = mongoose.model('User');
 
 describe('Users Controller', () => {
+  // it('Get request to /api/user shows users', done => {
+  //   const user = new User({ name: 'Joe', email: 'joe@email.com'})
+  //
+  //   user.save().then(() => {
+  //     request(app)
+  //       .get('/api/user')
+  //       .end(() => {
+  //         User.findOne({ _id: user._id })
+  //           .then(user => {
+  //             assert(user.email === "joe@email.com")
+  //             done();
+  //           })
+  //       })
+  //     })
+  // })
+
+
   it('Post request to /api/users creates new user', (done) => {
     User.count().then(count => {
       request(app)
