@@ -32,7 +32,7 @@ describe('Associations', (done) => {
     })
   })
 
-  it('saves a relation between a user and record', (done) => {
+  it('saves a relation between a user and record and a comment and the comment user', (done) => {
     User.findOne({ name: 'Joe' })
         .populate({ path:'records', populate: { path:'comments', populate: { path:'user' }}})
         .then((user) => {
@@ -42,5 +42,4 @@ describe('Associations', (done) => {
           done()
     })
   })
-
 })
