@@ -52,7 +52,7 @@ describe('Users Controller', () => {
       request(app)
         .put(`/api/users/${user._id}`)
         .send({ email: 'joe@gmail.com' })
-        .end((req, res) => {
+        .end(() => {
           User.findOne({ _id: user._id })
             .then(user => {
               assert(user.email === 'joe@gmail.com')
