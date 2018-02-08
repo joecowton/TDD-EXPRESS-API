@@ -11,7 +11,7 @@ if(process.env.NODE_ENV !== 'test'){
 }
 
 mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open to ' + port);
+  console.log(`Mongoose default connection open to ${port}`);
 });
 
 app.use(bodyParser.json());
@@ -20,7 +20,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 app.listen(port, err => {
   if(err) throw err;
-  console.log('App listening on port ' + port);
+  console.log(`App listening on port ${port}`);
 })
 
 routes(app);
