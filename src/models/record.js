@@ -21,9 +21,9 @@ const RecordSchema = new Schema(
 		quantity: Number,
 		comments: [{
 			type: Schema.Types.ObjectId,
-			ref: 'Comments'
-		}]
+			ref: 'comments'
+		}],
 	}
 );
 
-module.exports = mongoose.model('Record', RecordSchema);
+module.exports = mongoose.model('records', RecordSchema);

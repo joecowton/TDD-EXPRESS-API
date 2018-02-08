@@ -2,7 +2,7 @@ const assert = require('assert');
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../../app');
-const Record = mongoose.model('Record');
+const Record = mongoose.model('records');
 
 describe('Records Controller', () => {
   it('GET request to /api returns text', (done) => {

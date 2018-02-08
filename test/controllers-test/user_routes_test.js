@@ -2,7 +2,7 @@ const assert = require('assert');
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../../app');
-const User = mongoose.model('User');
+const User = mongoose.model('user');
 
 describe('Users Controller', () => {
 
