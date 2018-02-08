@@ -13,7 +13,11 @@ const UserSchema =  new Schema({
 	email: {
 		type: String,
 		required: [true, 'Email is required.']
-	}
+	},
+  records: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Records'
+  }]
 });
 
 module.exports = mongoose.model('User', UserSchema);

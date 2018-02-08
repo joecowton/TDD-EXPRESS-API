@@ -18,7 +18,11 @@ const RecordSchema = new Schema(
 		genre: {
 			type: String
 		},
-		quantity: Number
+		quantity: Number,
+		comments: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Comments'
+		}]
 	}
 );
 
