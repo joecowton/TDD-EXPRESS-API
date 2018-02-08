@@ -1,4 +1,5 @@
 const RecordController = require('../controllers/record_controller');
+const UserController = require('../controllers/user_controller');
 
 module.exports = (app) => {
   app.get("/api/", (req, res) => res.json({message: "Welcome to our record shop!"}));
@@ -9,9 +10,9 @@ module.exports = (app) => {
   app.delete('/api/records/:id', RecordController.delete)
   app.put('/api/records/:id', RecordController.update)
 
-  app.get('/api/users', RecordController.show)
-  app.post('/api/users', RecordController.create)
-  app.get('/api/users/:id', RecordController.find)
-  app.delete('/api/users/:id', RecordController.delete)
-  app.put('/api/users/:id', RecordController.update)
+  app.get('/api/users', UserController.show)
+  app.post('/api/users', UserController.create)
+  app.get('/api/users/:id', UserController.find)
+  app.delete('/api/users/:id', UserController.delete)
+  app.put('/api/users/:id', UserController.update)
 }

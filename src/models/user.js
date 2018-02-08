@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const RecordSchema = require('./record')
 const Schema = mongoose.Schema;
 
 const UserSchema =  new Schema({
@@ -11,9 +10,12 @@ const UserSchema =  new Schema({
     },
     required: [true, 'Name is required.']
   },
-  postCount: Number
+  email: {
+    type: String,
+    required: [true, 'Email is required.']
+  }
 });
 
-const User = mongoose.model('user', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

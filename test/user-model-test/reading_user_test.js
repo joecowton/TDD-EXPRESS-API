@@ -5,7 +5,7 @@ describe('Reading users out of database', () => {
   let joe;
 
   beforeEach((done) => {
-    joe = new User({ name: 'Joe' });
+    joe = new User({ name: 'Joe', email: 'joe@email.com' });
     joe.save()
       .then(() => done());
   });
