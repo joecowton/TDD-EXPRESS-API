@@ -27,7 +27,7 @@ module.exports = {
 
   update(req, res, next) {
     User.findByIdAndUpdate({ _id: req.params.id }, req.body)
-      .then(() => User.findById({ _id: userId }))
+      .then(() => User.findById({ _id: req.params.id }))
       .then(user => res.status(200).json(user))
       .catch(next)
   }

@@ -5,34 +5,31 @@ const app = require('../../app');
 const User = mongoose.model('User');
 
 describe('Users Controller', () => {
+
+  it('Get request to /api/users should get all the users', (done) => {
     const user = new User({ name: 'Joe', email: 'joe@email.com'})
-  //
-  //   user.save().then(() => {
-  //     request(app)
-  //       .get('/api/user')
-  //       .end(() => {
-  //         User.findOne({ _id: user._id })
-  //           .then(user => {
-  //             assert(user.email === "joe@email.com")
-  //             done();
-  //           })
-  //       })
-  //     })
-  // })
-
-    describe('/GET record', () => {
-      it('should GET all the records', (done) =>{
-        request(app)
-          .get('/records')
-          .end((err, res) => {
-              res.should.have.status(200);
-              expect(res.body).to.be.a('array');
-              expect(res.body.length).to.be.eql(0);
-            done();
-          })
-      })
+    user.save().then(() =>{
+      request(app)
+        .get('/api/users')
+        .end((err, res) => {
+          assert(res.body.length === 1)
+          assert(res.body[0].name === 'Joe')
+          done();
+        })
     })
+  })
 
+  it('Get request to /api/users/:id finds record', (done) => {
+    const user = new User({ name: 'Joe', email: 'joe@email.com'})
+    user.save().then(() =>{
+      request(app)
+        .get(`/api/users/${user._id}`)
+        .end((err, res) => {
+          assert(res.body._id.toString() === user._id.toString())
+          done();
+        })
+    })
+  })
 
   it('Post request to /api/users creates new user', (done) => {
     User.count().then(count => {
@@ -55,7 +52,7 @@ describe('Users Controller', () => {
       request(app)
         .put(`/api/users/${user._id}`)
         .send({ email: 'joe@gmail.com' })
-        .end(() => {
+        .end((req, res) => {
           User.findOne({ _id: user._id })
             .then(user => {
               assert(user.email === 'joe@gmail.com')
