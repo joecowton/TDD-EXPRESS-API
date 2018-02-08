@@ -11,8 +11,8 @@ describe('Records Controller', () => {
       .end((err, res) => {
         assert(res.body.message === "Welcome to our record shop!")
         done();
-      })
-  })
+      });
+  });
 
   it('should GET all the records', (done) => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
@@ -23,9 +23,9 @@ describe('Records Controller', () => {
           assert(res.body.length === 1)
           assert(res.body[0].title === 'Ooh Yeah')
           done();
-        })
-    })
-  })
+        });
+    });
+  });
 
   it('Post request to /api/records creates new record', (done) => {
     Record.count().then(count => {
@@ -49,9 +49,9 @@ describe('Records Controller', () => {
         .end((err, res) => {
           assert(res.body._id.toString() === record._id.toString())
           done();
-        })
-    })
-  })
+        });
+    });
+  });
 
   it('Put request to /api/records/:id edits record', (done) => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
@@ -65,10 +65,10 @@ describe('Records Controller', () => {
             .then(record => {
               assert(record.genre === "Garage")
               done();
-            })
-        })
-    })
-  })
+            });
+        });
+    });
+  });
 
   it('Delete request to /api/records/:id deletes record', done => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
@@ -81,8 +81,8 @@ describe('Records Controller', () => {
             .then((record) => {
               assert(record === null)
               done();
-            })
-        })
-    })
-  })
-})
+            });
+        });
+    });
+  });
+});
