@@ -22,34 +22,52 @@ describe('Updating a user', () => {
 
   it('instance type using set and save', (done) => {
     joe.set('name', 'Alex');
-    assertName(joe.save(), done);
+    joe.save()
+      .then(() => User.find({}))
+      .then((users) => {
+        assert(users.length === 1);
+        assert(users[0].name === 'Alex')
+        done();
+      })
   });
 
   it('model instance can update', (done) => {
-    assertName(
-      joe.update({ name: 'Alex'}),
-      done
-    )
+    joe.update({ name: 'Alex'})
+      .then(() => User.find({}))
+        .then((users) => {
+          assert(users.length === 1);
+          assert(users[0].name === 'Alex')
+          done();
+        })
   });
 
   it('model class can update', (done) => {
-    assertName(
-      User.update({ name: 'Joe'}, { name: 'Alex'}),
-      done
-    )
+    User.update({ name: 'Joe'}, { name: 'Alex'})
+      .then(() => User.find({}))
+      .then((users) => {
+        assert(users.length === 1);
+        assert(users[0].name === 'Alex')
+        done();
+      })
   });
 
   it('model class can update one record', (done) => {
-    assertName(
-      User.findOneAndUpdate({ name: 'Joe'}, { name: 'Alex'}),
-      done
-    )
+    User.findOneAndUpdate({ name: 'Joe'}, { name: 'Alex'})
+      .then(() => User.find({}))
+      .then((users) => {
+        assert(users.length === 1);
+        assert(users[0].name === 'Alex')
+        done();
+      })
   });
 
   it('model class can find record with ID and update', (done) => {
-    assertName(
-      User.findByIdAndUpdate(joe._id, { name: 'Alex'}),
-      done
-    )
+    User.findByIdAndUpdate(joe._id, { name: 'Alex'})
+      .then(() => User.find({}))
+      .then((users) => {
+        assert(users.length === 1);
+        assert(users[0].name === 'Alex')
+        done();
+      })
   });
 });
