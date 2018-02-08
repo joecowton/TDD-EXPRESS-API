@@ -6,10 +6,12 @@ const port = 8000;
 const routes =require('./src/routes/routes')
 const app = express();
 
-mongoose.connect("mongodb://user:user@ds225308.mlab.com:25308/records-test");
+if(process.env.NODE_ENV !== 'test'){
+  mongoose.connect("mongodb://user:user@ds125938.mlab.com:25938/records-dev");
+}
 
 mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open to' + port);
+  console.log('Mongoose default connection open to ' + port);
 });
 
 app.use(bodyParser.json());
@@ -18,9 +20,13 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 app.listen(port, err => {
   if(err) throw err;
-  console.log('App listening on port' + port);
+  console.log('App listening on port ' + port);
 })
 
 routes(app);
+
+app.use((err, req, res, next) => {
+  res.status(422).send({ error: err.message })
+})
 
 module.exports = app;

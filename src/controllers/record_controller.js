@@ -1,14 +1,14 @@
 const Record = require('../models/record');
 
 module.exports = {
-  show (req, res) {
+  show (req, res, next) {
     return Record
       .find({})
       .then(records => res.status(200).json(records))
-      .catch(error => res.status(400).send(error));
+      .catch(next)
   },
 
-  create(req, res) {
+  create(req, res, next) {
     return Record
       .create({
         artist: req.body.artist,
@@ -17,33 +17,35 @@ module.exports = {
         price: req.body.price
       })
       .then(record => res.status(200).json(record))
-      .catch(error => res.status(400).send(error));
+      .catch(next)
   },
 
-  find(req, res) {
+  find(req, res, next) {
     return Record
       .findById(req.params.id, (err, record) => {
         if(err) res.send(err);
         res.json(record);
       })
-      .catch(error => res.status(400).send(error));
+      .catch(next);
   },
 
-  delete(req, res) {
+  delete(req, res, next) {
     return Record
-      .remove({_id : req.params.id}, (err, result) => {
+      .remove({ _id : req.params.id }, (err, result) => {
         res.json({ message: "Book successfully deleted!", result });
-      });
+      })
+      .catch(next)
   },
 
-  update(req, res) {
+  update(req, res, next) {
     return Record
-      .findById({_id: req.params.id}, (err, record) => {
+      .findById({ _id: req.params.id }, (err, record) => {
         if(err) res.send(err);
         Object.assign(record, req.body).save((err, record) => {
             if(err) res.send(err);
             res.json({ message: 'Record updated!', record });
-      });
+      })
+      .catch(next)
     });
   }
 }

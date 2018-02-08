@@ -1,12 +1,12 @@
 // process.env.NODE_ENV = 'test';
-//
+// const request = require('supertest');
 // const assert = require('assert')
 // const mongoose = require('mongoose');
 // const Record = require('../src/models/record');
 // const chai = require('chai');
 // const expect = chai.expect;
 // const chaiHttp = require('chai-http');
-// const server  = require('../server');
+// const app  = require('../app');
 // const should = chai.should();
 //
 // chai.use(chaiHttp);
@@ -37,7 +37,7 @@
 //
 //   describe('/GET record', () => {
 //     it('should GET all the records', (done) =>{
-//       chai.request(server)
+//       request(app)
 //         .get('/records')
 //         .end((err, res) => {
 //             res.should.have.status(200);
@@ -54,7 +54,7 @@
 //           genre: "Reggae",
 //           price: 1.99
 //       }
-//       chai.request(server)
+//       request(app)
 //           .post('/records')
 //           .send(record)
 //           .end((err, res) => {
@@ -74,7 +74,7 @@
 //           genre: "Reggae",
 //           price: 1.99
 //       }
-//       chai.request(server)
+//       request(app)
 //           .post('/records')
 //           .send(record)
 //           .end((err, res) => {
@@ -98,7 +98,7 @@
 //           price: 1.99
 //       })
 //       record.save((err, record) => {
-//         chai.request(server)
+//         request(app)
 //           .get('/records/' + record.id)
 //           .send(record)
 //           .end((err, res) => {
@@ -119,7 +119,7 @@
 //     it('it should UPDATE a book given the id', (done) => {
 //       let record = new Record ({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
 //       record.save((err, record) => {
-//         chai.request(server)
+//         request(app)
 //           .put('/records/' + record.id)
 //           .send({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: '2.99' })
 //           .end((err, res) => {

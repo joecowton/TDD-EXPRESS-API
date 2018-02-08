@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../src/models/user');
+const User = require('../../src/models/user');
 
 describe('Reading users out of database', () => {
   let joe;
@@ -26,5 +26,5 @@ describe('Reading users out of database', () => {
       })
   })
 
-  
+
 })

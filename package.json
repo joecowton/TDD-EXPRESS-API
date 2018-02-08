@@ -26,8 +26,8 @@
     "morgan": "^1.9.0"
   },
   "scripts": {
-    "test": "nodemon --exec 'mocha -R min --timeout 10000 --require babel-register'",
-    "start": "babel-node server.js"
+    "test": "NODE_ENV=test nodemon --exec 'mocha -R min --timeout 10000 --require babel-register'",
+    "start": "babel-node app.js"
   },
   "repository": {
     "type": "git",
