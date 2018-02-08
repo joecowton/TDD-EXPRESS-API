@@ -5,7 +5,7 @@ const app = require('../../app');
 const Record = mongoose.model('Record');
 
 describe('Records Controller', () => {
-  it('handles a GET request to /api', (done) => {
+  it('GET request to /api returns text', (done) => {
     request(app)
       .get('/api/')
       .end((err, res) => {
@@ -14,7 +14,7 @@ describe('Records Controller', () => {
       });
   });
 
-  it('should GET all the records', (done) => {
+  it('GET request to /api/records gets all the records', (done) => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
     record.save().then(() =>{
       request(app)
@@ -27,7 +27,7 @@ describe('Records Controller', () => {
     });
   });
 
-  it('Post request to /api/records creates new record', (done) => {
+  it('POST request to /api/records creates new record', (done) => {
     Record.count().then(count => {
       request(app)
         .post('/api/records')
@@ -41,7 +41,7 @@ describe('Records Controller', () => {
       });
   });
 
-  it('Get request to /api/records/:id finds record', (done) => {
+  it('GET request to /api/records/:id finds record', (done) => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
     record.save().then(() =>{
       request(app)
@@ -53,7 +53,7 @@ describe('Records Controller', () => {
     });
   });
 
-  it('Put request to /api/records/:id edits record', (done) => {
+  it('PUT request to /api/records/:id edits record', (done) => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
 
     record.save().then(() =>{
@@ -70,7 +70,7 @@ describe('Records Controller', () => {
     });
   });
 
-  it('Delete request to /api/records/:id deletes record', done => {
+  it('DELETE request to /api/records/:id deletes record', done => {
     const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
 
     record.save().then(() => {
