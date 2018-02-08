@@ -5,13 +5,26 @@ const app = require('../../app');
 const Record = mongoose.model('Record');
 
 describe('Records Controller', () => {
-  it('handles a GET request to /api/records', (done) => {
+  it('handles a GET request to /api', (done) => {
     request(app)
       .get('/api/')
-      .end((err, response) => {
-        assert(response.body.message === "Welcome to our record shop!")
+      .end((err, res) => {
+        assert(res.body.message === "Welcome to our record shop!")
         done();
       })
+  })
+
+  it('should GET all the records', (done) => {
+    const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
+    record.save().then(() =>{
+      request(app)
+        .get('/api/records')
+        .end((err, res) => {
+          assert(res.body.length === 1)
+          assert(res.body[0].title === 'Ooh Yeah')
+          done();
+        })
+    })
   })
 
   it('Post request to /api/records creates new record', (done) => {
@@ -23,9 +36,21 @@ describe('Records Controller', () => {
           Record.count().then(newCount => {
             assert(count + 1 === newCount);
             done()
-          })
+          });
+        });
+      });
+  });
+
+  it('Get request to /api/records/:id finds record', (done) => {
+    const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
+    record.save().then(() =>{
+      request(app)
+        .get(`/api/records/${record._id}`)
+        .end((err, res) => {
+          assert(res.body._id.toString() === record._id.toString())
+          done();
         })
-      })
+    })
   })
 
   it('Put request to /api/records/:id edits record', (done) => {

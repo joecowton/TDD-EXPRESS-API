@@ -5,8 +5,7 @@ const app = require('../../app');
 const User = mongoose.model('User');
 
 describe('Users Controller', () => {
-  // it('Get request to /api/user shows users', done => {
-  //   const user = new User({ name: 'Joe', email: 'joe@email.com'})
+    const user = new User({ name: 'Joe', email: 'joe@email.com'})
   //
   //   user.save().then(() => {
   //     request(app)
@@ -20,6 +19,19 @@ describe('Users Controller', () => {
   //       })
   //     })
   // })
+
+    describe('/GET record', () => {
+      it('should GET all the records', (done) =>{
+        request(app)
+          .get('/records')
+          .end((err, res) => {
+              res.should.have.status(200);
+              expect(res.body).to.be.a('array');
+              expect(res.body.length).to.be.eql(0);
+            done();
+          })
+      })
+    })
 
 
   it('Post request to /api/users creates new user', (done) => {
