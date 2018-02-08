@@ -23,7 +23,6 @@ describe('Deleting a user', () => {
     Record.remove({ _id: record._id })
       .then(() => Record.findOne({ _id: record._id }))
       .then((record) => {
-        console.log(record);
         assert(record === null);
         done();
       });

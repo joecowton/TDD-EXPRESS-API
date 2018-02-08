@@ -2,26 +2,33 @@ const assert = require('assert');
 const Record= require('../../src/models/record');
 
 describe('Validating records', () => {
-  it('requires a user name', () => {
-    const user = new User({ name: undefined})
-    const validationResult = user.validateSync();
-    const { message } = validationResult.errors.name;
-    assert(message === 'Name is required.');
+  it('requires a title', () => {
+    const record = new Record({ title: undefined })
+    const validationResult = record.validateSync();
+    const { message } = validationResult.errors.title;
+    assert(message === 'Title is required.');
   });
 
-  it('requires a user name longer than 2 characters', () => {
-    const user = new User({ name: 'Al' });
-    const validationResult = user.validateSync();
-    const { message } = validationResult.errors.name;
-    assert(message === 'Name must be longer than 2 characters.');
+  it('requires an artist', () => {
+    const record = new Record({ artist: undefined })
+    const validationResult = record.validateSync();
+    const { message } = validationResult.errors.artist;
+    assert(message === 'Artist is required.');
+  });
+
+  it('requires a price', () => {
+    const record = new Record({ price: undefined })
+    const validationResult = record.validateSync();
+    const { message } = validationResult.errors.price;
+    assert(message === 'Price is required.');
   });
 
   it('disallows invalid records from being saved', (done) => {
-    const user = new User( { name: 'Al' })
-    user.save()
+    const record = new Record({ price: undefined })
+    record.save()
       .catch((validationResult) => {
-        const { message } = validationResult.errors.name;
-        assert(message === 'Name must be longer than 2 characters.');
+        const { message } = validationResult.errors.price;
+        assert(message === 'Price is required.');
         done();
       })
   })

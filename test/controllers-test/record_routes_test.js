@@ -38,7 +38,6 @@ describe('Records Controller', () => {
         .end(() => {
           Record.findOne({ _id: record._id })
             .then(record => {
-              console.log(record);
               assert(record.genre === "Garage")
               done();
             })

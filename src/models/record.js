@@ -5,7 +5,7 @@ const RecordSchema = new Schema(
   {
   	artist: {
        type: String,
-       required: [true, 'Name is required.']
+       required: [true, 'Artist is required.']
      },
   	title: {
        type: String,
@@ -14,7 +14,6 @@ const RecordSchema = new Schema(
     price: {
       type: String,
       required: [true, 'Price is required.']
-
     },
     genre: {
       type: String
