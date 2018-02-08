@@ -1,7 +1,7 @@
 const assert = require('assert');
 const Record = require('../../src/models/record')
 
-describe('Updating a records', () => {
+describe('Updating records', () => {
   let record;
 
   beforeEach((done) => {
