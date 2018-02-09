@@ -27,7 +27,8 @@
   },
   "scripts": {
     "test": "NODE_ENV=test nodemon --exec 'nyc mocha --verbose --timeout 10000 --require babel-register'",
-    "start": "nodemon app.js"
+    "start": "babel-node app.js",
+    "build": "babel app.js -d dist"
   },
   "repository": {
     "type": "git",
