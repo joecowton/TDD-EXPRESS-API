@@ -14,10 +14,20 @@ module.exports = {
 	},
 
 	createRecord(req, res, next) {
-		console.log(req.body);
-
-		Record.create(req.body)
+		Record.create({
+									artist: req.params.artistId,
+									title: req.body.title,
+									price: req.body.price
+			})
 			.then(record => res.status(200).json(record))
+			.catch(next);
+	},
+
+	findByArtist(req, res, next){
+		const artist = req.params.artistId
+		Record.find({ artist: artist })
+			.populate('artist')
+			.then(records => res.status(200).json(records))
 			.catch(next);
 	},
 

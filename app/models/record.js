@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const RecordSchema = new Schema(
 	{
-  	artist: {
+  	artist:{
 			type: String,
-			required: [true, 'Artist is required.']
+			ref: 'artists'
 		},
   	title: {
 			type: String,

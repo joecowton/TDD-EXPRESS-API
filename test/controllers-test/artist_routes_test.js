@@ -43,7 +43,7 @@ describe('Artists Controller', () => {
         });
     });
   });
-
+  //
   it('PUT request to /api/artists/:id edits artist', (done) => {
     const artist = new Artist({ name: 'Cotton Eye Joe' })
 

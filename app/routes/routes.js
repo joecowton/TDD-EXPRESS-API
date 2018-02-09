@@ -18,7 +18,12 @@ module.exports = (app) => {
 	app.put('/api/artists/:artistId', ArtistController.update);
 	app.delete('/api/artists/:artistId', ArtistController.delete);
 
+	app.get('/api/artists/:artistId/records', RecordController.findByArtist);
 	app.post('/api/artists/:artistId/records', RecordController.createRecord);
+
+
+
+	app.post('/api/artists/:artistId/records/:recordId/comment', CommentController.create);
 
 
 	// app.get('./api/artists/:artistId/records'), ArtistController.showAllRecords);
