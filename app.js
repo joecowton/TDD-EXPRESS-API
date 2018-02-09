@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require ('body-parser');
-const port = 8000;
+const PORT = process.env.PORT || 8000;
 
-const routes =require('./app/routes/routes');
+const routes = require('./app/routes/routes');
 const app = express();
 
 if(process.env.NODE_ENV !== 'test'){
@@ -11,16 +11,16 @@ if(process.env.NODE_ENV !== 'test'){
 };
 
 mongoose.connection.on('connected', () => {
-  console.log(`Mongoose default connection open to ${port}`);
+  console.log(`Mongoose default connection open to ${PORT}`);
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/json' }));
 
 
-app.listen(port, err => {
+app.listen(PORT, err => {
   if(err) throw err;
-  console.log(`App listening on port ${port}`);
+  console.log(`App listening on port ${PORT}`);
 });
 
 routes(app);
