@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Record = require('../../src/models/record');
+const Record = require('../../app/models/record');
 
 describe('Reading records out of database', () => {
   let record;

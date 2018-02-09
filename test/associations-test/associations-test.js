@@ -1,8 +1,8 @@
 const assert = require('assert')
 const mongoose = require('mongoose');
-const User = require('../../src/models/user');
-const Comment = require('../../src/models/comment');
-const Record = require('../../src/models/record');
+const User = require('../../app/models/user');
+const Comment = require('../../app/models/comment');
+const Record = require('../../app/models/record');
 
 describe('Associations', (done) => {
   let joe, dave, record, comment;
