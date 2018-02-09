@@ -15,8 +15,6 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/json' }));
-
 
 app.listen(PORT, err => {
   if(err) throw err;
