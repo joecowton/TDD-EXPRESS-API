@@ -3,7 +3,7 @@ const UserController = require('../controllers/user_controller');
 const CommentController = require('../controllers/comment_controller');
 
 module.exports = (app) => {
-	app.get('/', (req, res) => res.json({message: 'Welcome to our record shop!'}));
+	app.get('/api/', (req, res) => res.json({message: 'Welcome to our record shop!'}));
 
 	app.get('/api/records', RecordController.show);
 	app.post('/api/records', RecordController.create);
