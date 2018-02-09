@@ -18,62 +18,62 @@ describe('Artists Controller', () => {
     });
   });
 
-  // xit('POST request to /api/records creates new record', (done) => {
-  //   Record.count().then(count => {
-  //     request(app)
-  //       .post('/api/records')
-  //       .send({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
-  //       .end(() =>{
-  //         Record.count().then(newCount => {
-  //           assert(count + 1 === newCount);
-  //           done()
-  //         });
-  //       });
-  //     });
-  // });
+  it('POST request to /api/artists creates new artist', (done) => {
+    Artist.count().then(count => {
+      request(app)
+        .post('/api/artists')
+        .send({ name: 'Fat Joe' })
+        .end(() =>{
+          Artist.count().then(newCount => {
+            assert(count + 1 === newCount);
+            done()
+          });
+        });
+      });
+  });
   //
-  // xit('GET request to /api/records/:id finds record', (done) => {
-  //   const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
-  //   record.save().then(() =>{
-  //     request(app)
-  //       .get(`/api/records/${record._id}`)
-  //       .end((err, res) => {
-  //         assert(res.body._id.toString() === record._id.toString())
-  //         done();
-  //       });
-  //   });
-  // });
-  //
-  // xit('PUT request to /api/records/:id edits record', (done) => {
-  //   const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
-  //
-  //   record.save().then(() =>{
-  //     request(app)
-  //       .put(`/api/records/${record._id}`)
-  //       .send({ genre: "Garage" })
-  //       .end(() => {
-  //         Record.findOne({ _id: record._id })
-  //           .then(record => {
-  //             assert(record.genre === "Garage")
-  //             done();
-  //           });
-  //       });
-  //   });
-  // });
-  //
-  // xit('DELETE request to /api/records/:id deletes record', done => {
-  //   const record = new Record({ artist: "Mad Proffesor", title: "Ooh Yeah", genre: "Reggae", price: 1.99 })
-  //
-  //   record.save().then(() => {
-  //     request(app)
-  //       .delete(`/api/records/${record._id}`)
-  //       .end(() => {
-  //         Record.findOne({ _id: record._id })
-  //           .then((record) => {
-  //             assert(record === null)
-  //             done();
-  //           });
-  //       });
-  //   });
-  // });
+  it('GET request to /api/artists/:id finds artist', (done) => {
+    const artist = new Artist({ name: 'Mariah' })
+    artist.save().then(() =>{
+      request(app)
+        .get(`/api/artists/${artist._id}`)
+        .end((err, res) => {
+          assert(res.body._id.toString() === artist._id.toString())
+          done();
+        });
+    });
+  });
+
+  it('PUT request to /api/artists/:id edits artist', (done) => {
+    const artist = new Artist({ name: 'Cotton Eye Joe' })
+
+    artist.save().then(() =>{
+      request(app)
+        .put(`/api/artists/${artist._id}`)
+        .send({ name: "Cotton Eye Jim" })
+        .end(() => {
+          Artist.findOne({ _id: artist._id })
+            .then(artist => {
+              assert(artist.name === "Cotton Eye Jim")
+              done();
+            });
+        });
+    });
+  });
+
+  it('DELETE request to /api/artists/:id deletes artist', done => {
+    const artist = new Artist({ name: "Mad Proffesor" })
+
+    artist.save().then(() => {
+      request(app)
+        .delete(`/api/artists/${artist._id}`)
+        .end(() => {
+          Artist.findOne({ _id: artist._id })
+            .then((artist) => {
+              assert(artist === null)
+              done();
+            });
+        });
+    });
+  });
 });

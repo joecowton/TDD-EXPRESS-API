@@ -13,6 +13,16 @@ module.exports = (app) => {
 	app.put('/api/records/:id', RecordController.update);
 
 	app.get('/api/artists', ArtistController.show);
+	app.post('/api/artists', ArtistController.create);
+	app.get('/api/artists/:artistId', ArtistController.find);
+	app.put('/api/artists/:artistId', ArtistController.update);
+	app.delete('/api/artists/:artistId', ArtistController.delete);
+
+	app.post('/api/artists/:artistId/records', RecordController.createRecord);
+
+
+	// app.get('./api/artists/:artistId/records'), ArtistController.showAllRecords);
+	// app.get('/api/artists/:artistId/records/:recordId', ArtistController.showOneRecord);
 
 
 	// app.get('/api/records/:id/comments/:commentId', CommentController.find);
