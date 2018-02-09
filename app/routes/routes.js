@@ -1,6 +1,7 @@
 const RecordController = require('../controllers/record_controller');
 const UserController = require('../controllers/user_controller');
 const CommentController = require('../controllers/comment_controller');
+const ArtistController = require('../controllers/artist_controller');
 
 module.exports = (app) => {
 	app.get('/api/', (req, res) => res.json({message: 'Welcome to our record shop!'}));
@@ -10,6 +11,9 @@ module.exports = (app) => {
 	app.get('/api/records/:id', RecordController.find);
 	app.delete('/api/records/:id', RecordController.delete);
 	app.put('/api/records/:id', RecordController.update);
+
+	app.get('/api/artists', ArtistController.show);
+
 
 	// app.get('/api/records/:id/comments/:commentId', CommentController.find);
 
