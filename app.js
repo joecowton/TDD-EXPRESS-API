@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const bodyParser = require ('body-parser');
 const PORT = process.env.PORT || 8000;
 
@@ -13,6 +14,8 @@ if(process.env.NODE_ENV !== 'test'){
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose default connection open to ${PORT}`);
 });
+
+passport.use(new GoogleStrategy());
 
 app.use(bodyParser.json());
 
