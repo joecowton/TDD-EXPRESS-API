@@ -13,14 +13,6 @@ module.exports = {
 			.catch(next);
 	},
 
-	createRecord(req, res, next) {
-		console.log(req.body);
-
-		Record.create(req.body)
-			.then(record => res.status(200).json(record))
-			.catch(next);
-	},
-
 	find(req, res, next){
 		Record.findById({ _id: req.params.id})
 			.then(record => res.status(200).json(record))
